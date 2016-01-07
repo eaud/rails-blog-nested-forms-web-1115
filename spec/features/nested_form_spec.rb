@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'nested form for tag in post', :type => :feature do 
+describe 'nested form for tag in post', :type => :feature do
   it 'can create a post without a new tag' do
     visit 'posts/new'
     within(all('.field').first) do
@@ -11,7 +11,7 @@ describe 'nested form for tag in post', :type => :feature do
     expect(page).to have_content(@post1.name)
   end
 
-  it 'can create a post with a new tag' do 
+  it 'can create a post with a new tag' do
     visit 'posts/new'
     within(all('.field').first) do
       fill_in('Name', :with => @post1.name)
@@ -21,6 +21,6 @@ describe 'nested form for tag in post', :type => :feature do
       fill_in('Name', :with => "witty")
     end
     click_button('Create Post')
-    expect(page).to have_content("witty")
+    expect(page.body).to include("witty")
   end
 end
